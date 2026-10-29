@@ -1,0 +1,104 @@
+{
+  "atomCode": "s3-upload",
+  "name": "S3 upload",
+  "version": "1.0.0",
+  "description": "Uploads a workspace directory to S3 (or anything with an S3 endpoint) with the AWS CLI.",
+  "execution": {
+    "packagePath": "s3-upload.jar",
+    "language": "java",
+    "target": "$atom_java_path -cp s3-upload.jar com.jenkinschina.atom.sdk.AtomRunner"
+  },
+  "input": {
+    "bucket": {
+      "label": "Bucket",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "source": {
+      "label": "要上传的目录（workspace 相对）",
+      "type": "vuex-input",
+      "default": "dist"
+    },
+    "prefix": {
+      "label": "对象前缀",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "region": {
+      "label": "区域",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "endpointUrl": {
+      "label": "自定义 endpoint（MinIO / R2 / OSS）",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "profile": {
+      "label": "AWS profile",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "recursive": {
+      "label": "递归上传",
+      "type": "checkbox",
+      "default": "true"
+    },
+    "delete": {
+      "label": "删除目标端多余的对象",
+      "type": "checkbox",
+      "default": "false"
+    },
+    "awsAccessKeyId": {
+      "label": "AWS_ACCESS_KEY_ID（凭据 id）",
+      "type": "vuex-input",
+      "default": "",
+      "isSensitive": true
+    },
+    "awsSecretAccessKey": {
+      "label": "AWS_SECRET_ACCESS_KEY（凭据 id）",
+      "type": "vuex-input",
+      "default": "",
+      "isSensitive": true
+    },
+    "awsSessionToken": {
+      "label": "AWS_SESSION_TOKEN（凭据 id，可选）",
+      "type": "vuex-input",
+      "default": "",
+      "isSensitive": true
+    }
+  },
+  "output": {
+    "uri": {
+      "type": "string",
+      "description": "s3://bucket/prefix"
+    },
+    "bucket": {
+      "type": "string",
+      "description": "bucket"
+    },
+    "prefix": {
+      "type": "string",
+      "description": "前缀"
+    },
+    "uploadedLines": {
+      "type": "string",
+      "description": "上传记录行数"
+    },
+    "location": {
+      "type": "report",
+      "description": "S3 控制台链接"
+    }
+  },
+  "x-jenkins": {
+    "protocol": "jenkins-1",
+    "requires": {
+      "runner": ">=0.4.0"
+    },
+    "secrets": {
+      "awsAccessKeyId": "",
+      "awsSecretAccessKey": "",
+      "awsSessionToken": ""
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "S3 upload",
+  "summary": "Uploads a workspace directory to S3 (or anything with an S3 endpoint) with the AWS CLI.",
+  "author": "hummerstudio",
+  "license": "MIT",
+  "tags": [
+    "official-port",
+    "s3-upload"
+  ],
+  "homepage": "https://github.com/hummerstudio/jenkins-atom-s3-upload"
+}
