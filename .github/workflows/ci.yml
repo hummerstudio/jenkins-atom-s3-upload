@@ -37,4 +37,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: s3-upload-atom
-          path: atom/dist/s3-upload/
+          path: atom/target/dist/s3-upload/
