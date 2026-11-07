@@ -48,7 +48,7 @@ public class S3UploadAtom implements AtomTask {
 
         String key = prefix.isBlank()
                 ? bucket
-                : bucket + "/" + prefix.replaceAll("^/+|/+$", "");
+                : bucket + "/" + prefix.replaceAll("^/+", "").replaceAll("/+$", "");
         List<String> command = new ArrayList<>(List.of(aws, "s3", "cp", sourcePath.toString(), "s3://" + key));
         if (recursive) {
             command.add("--recursive");
